@@ -7,7 +7,7 @@ public class Generator {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Generator sort = new Generator();
-		sort.generateRect(50); // Set the number of elementes/rectangles.
+		sort.generateRect(20); // Set the number of elements/rectangles.
 
 	}
 

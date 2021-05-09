@@ -10,6 +10,7 @@ public class MainView {
 	public int frameWidth;
 	public int frameHeight;
 	public static JFrame frame = new JFrame();
+	public SortPanel panel = new SortPanel();
 	public JPanel buttonPanel = new JPanel();
 	
 	public MainView(List<Rectangle> listOfRect) {
@@ -20,7 +21,7 @@ public class MainView {
 		setList(listOfRect);
 		this.frameWidth = width;
 		this.frameHeight = height;
-		frame.add(new SortPanel());
+		frame.add(panel);
 		frame.add(buttonToSort(), BorderLayout.SOUTH);
 		setFrame();
     }
@@ -39,42 +40,36 @@ public class MainView {
 	    sortButton.addActionListener(new ActionListener() {
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
-	    		SortPanel panel = new SortPanel();
-	    		panel.sort(new InsertionSort()); // Change which algorithm to use. 
+	    		sort(new InsertionSort()); // Change which algorithm to use.
 	    	}
 	    });
 	    buttonPanel.add(sortButton);
 	    return buttonPanel;
 	}
-	
-	public static void refreshMethod(List<Rectangle> listOfRect) {
-		setList(listOfRect);
-        /*try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	    frame.repaint();
-        try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
+
+	public void sort(Sort sortType) {
+		List<Rectangle> list = sortType.sort(listOfRect, panel);
+		panel.refreshMethod(list);
 	}
 	
 	class SortPanel extends JPanel {
 		@Override
 		public void paint(Graphics g) {
-	        Graphics2D g2d = (Graphics2D) g;
+			Graphics2D g2d = (Graphics2D) g;
 			for (Rectangle eachRect : listOfRect) {
-	        	g2d.setColor(Color.GRAY);
-	            g2d.fillRect(eachRect.getX(), Rectangle.y, Rectangle.width, eachRect.getHeight());
-	        }
+				g2d.setColor(Color.GRAY);
+				g2d.fillRect(eachRect.getX(), Rectangle.y, Rectangle.width, eachRect.getHeight());
+			}
 		}
-		
-		public void sort(Sort sortType) {
-			List<Rectangle> list = sortType.sort(listOfRect, frame);
-    		refreshMethod(list);
+
+		public void refreshMethod(List<Rectangle> list) {
+			setList(list);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			frame.repaint();
 		}
 	}
 
@@ -84,7 +79,6 @@ public class MainView {
 	
 	public static void setList(List<Rectangle> list) {
 		listOfRect = list;
-		frame.repaint();
 	}
 	
 	public int getWidth() {
