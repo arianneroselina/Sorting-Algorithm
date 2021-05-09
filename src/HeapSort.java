@@ -1,5 +1,4 @@
 import java.util.List;
-import javax.swing.JFrame;
 
 public class HeapSort extends Sort {
 
@@ -7,10 +6,10 @@ public class HeapSort extends Sort {
 	 * This method sorts the list using Heap Sort.
 	 * 
 	 * @param list  the list
-	 * @param frame the frame
+	 * @param panel the panel
 	 * @return the sorted list
 	 */
-	public List<Rectangle> sort(List<Rectangle> list, JFrame frame) {
+	public List<Rectangle> sort(List<Rectangle> list, MainView.SortPanel panel) {
 		int size = list.size();
 
 		// Build heap (rearrange array)

@@ -1,9 +1,8 @@
 import java.util.List;
-import javax.swing.JFrame;
 
 public abstract class Sort {
 
-	public abstract List<Rectangle> sort(List<Rectangle> list, JFrame frame);
+	public abstract List<Rectangle> sort(List<Rectangle> list, MainView.SortPanel panel);
 	
 	/**
 	 * Swap two elements at index a and index b.

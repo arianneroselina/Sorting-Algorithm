@@ -1,16 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 
 public class MergeSort extends Sort {
 
 	/**
 	 * The method that will be used for calling.
 	 * @param list		the list
-	 * @param frame		the frame
+	 * @param panel		the panel
 	 * @return			the sorted list
 	 */
-	public List<Rectangle> sort(List<Rectangle> list, JFrame frame) {
+	public List<Rectangle> sort(List<Rectangle> list, MainView.SortPanel panel) {
 		return sort(list, list.size());
 	}
 

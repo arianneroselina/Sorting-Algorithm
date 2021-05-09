@@ -1,16 +1,15 @@
 import java.util.List;
-import javax.swing.JFrame;
 
 public class SelectionSort extends Sort {
 
 	/**
 	 * This method sorts the rectangles in list using Selection Sort.
 	 * @param list  the list
-	 * @param frame the frame
+	 * @param panel the panel
 	 * @return
 	 */
 	@Override
-	public List<Rectangle> sort(List<Rectangle> list, JFrame frame) {
+	public List<Rectangle> sort(List<Rectangle> list, MainView.SortPanel  panel) {
 		int n = list.size(), minIndex, tempX;
 		Rectangle temp;
 		for (int i = 0; i < n - 1; i++) {
